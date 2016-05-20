@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-var TodoList = React.createClass({
+const TodoList = React.createClass({
   getInitialState: function() {
     return {items: ['hello', 'world', 'click', 'me']};
   },
