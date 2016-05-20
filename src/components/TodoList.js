@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 var TodoList = React.createClass({
   getInitialState: function() {
