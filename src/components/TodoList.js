@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Todo from './Todo';
 
 const TodoList = React.createClass({
   getInitialState: function() {
@@ -19,9 +20,7 @@ const TodoList = React.createClass({
   render: function() {
     var items = this.state.items.map(function(item, i) {
       return (
-        <div key={item} onClick={this.handleRemove.bind(this, i)}>
-          {item}
-        </div>
+        <Todo key={item} item={item}/>
       );
     }.bind(this));
     return (
