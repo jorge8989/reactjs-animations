@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import TodoList from './components/TodoList';
+import App from './App';
 
 render(
-    <TodoList />,
+    <App />,
    document.getElementById('app')
 );
