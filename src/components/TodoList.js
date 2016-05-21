@@ -5,11 +5,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const TodoList = React.createClass({
   render: function() {
-    var items = this.props.items.map(function(item, i) {
-      return (
-        <Todo key={item} item={item}/>
-      );
-    }.bind(this));
+    const items = this.props.items.map((item, i) => {
+      return <Todo key={item} item={item}/>
+    });
   return (
       <table class="table table-striped">
         <thead>

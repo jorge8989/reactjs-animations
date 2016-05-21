@@ -13,11 +13,6 @@ const App = React.createClass({
       this.state.items.concat([text]);
     this.setState({items: newItems});
   },
-  handleRemove: function(i) {
-    var newItems = this.state.items.slice();
-    newItems.splice(i, 1);
-    this.setState({items: newItems});
-  },
   render: function() {
     return(
       <div class="container">
