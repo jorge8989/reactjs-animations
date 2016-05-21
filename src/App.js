@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Todo from './components/Todo';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
@@ -21,9 +20,12 @@ const App = React.createClass({
   },
   render: function() {
     return(
-      <div>
-        <AddTodo createTask={this.createTask} />
-        <TodoList items={this.state.items} />
+      <div class="container">
+        <div class="col-md-12">
+          <h1>Todos App</h1>
+          <AddTodo createTask={this.createTask} />
+          <TodoList items={this.state.items} />
+        </div>
       </div>
     )
   }

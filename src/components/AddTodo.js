@@ -11,8 +11,11 @@ const AddTodo = React.createClass({
     const handleCreate = this.handleCreate
     
     return (
-      <form onSubmit={(e) => { handleCreate(e) }}>
-        <input type="text" ref="text"/><input type="submit" value="Add"/>
+      <form onSubmit={(e) => { handleCreate(e) }} class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" ref="text"/>
+          <input type="submit" value="Add" class="btn btn-primary"/>
+        </div>
       </form>
     )
   }
