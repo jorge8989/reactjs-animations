@@ -1,12 +1,17 @@
 import React from 'react';
 import Todo from '../components/Todo';
+import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-const TodoList = React.createClass({
+function mapStateToProps(state) {
+  return { todos: state.todos }
+}
+
+let TodoList = React.createClass({
   render: function() {
-    const items = this.props.items.map((item, i) => {
-      return <Todo key={item} item={item}/>
+    const items = this.props.todos.map((todo, i) => {
+      return <Todo key={todo.text} item={todo.text}/>
     });
   return (
       <table class="table table-striped">
@@ -19,8 +24,13 @@ const TodoList = React.createClass({
           { items }
         </ReactCSSTransitionGroup>
       </table>
-  )
+    )
   }
 })
+
+TodoList = connect(
+  mapStateToProps
+)(TodoList)
+
 
 export default TodoList;
