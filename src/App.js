@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Todo from './components/Todo';
-import TodoList from './components/TodoList';
+import TodoList from './containers/TodoList';
 import AddTodo from './components/AddTodo';
 
 const App = React.createClass({
