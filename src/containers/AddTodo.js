@@ -1,9 +1,11 @@
 import React from 'react';
+import {ADD_TODO, addTodo } from '../actions/Actions';
+import { connect } from 'react-redux';
 
-const AddTodo = React.createClass({
+let AddTodo = React.createClass({
   handleCreate: function(e) {
     e.preventDefault();
-    this.props.createTask(this.refs.text.value);
+    this.props.createTask(this.refs.text.value)
     this.refs.text.value = '';
     this.refs.text.focus();
   },
@@ -20,4 +22,24 @@ const AddTodo = React.createClass({
     )
   }
 })
+
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createTask: (text) => {
+      dispatch(addTodo(text))
+    }
+  }
+}
+
+AddTodo = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTodo)
+
 export default AddTodo;

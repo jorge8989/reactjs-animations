@@ -9,8 +9,9 @@ import App from './App';
 
 let store = createStore(todoApp)
 
-store.dispatch(addTodo('new task'))
-console.log(store.getState())
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
 
 render(
   <Provider store={store}>

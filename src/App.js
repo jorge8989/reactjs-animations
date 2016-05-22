@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Todo from './components/Todo';
 import TodoList from './containers/TodoList';
-import AddTodo from './components/AddTodo';
+import AddTodo from './containers/AddTodo';
 
 const App = React.createClass({
   render: function() {
@@ -10,7 +10,7 @@ const App = React.createClass({
       <div class="container">
         <div class="col-md-12">
           <h1>Todos App</h1>
-          <AddTodo createTask={this.createTask} />
+          <AddTodo />
           <TodoList />
         </div>
       </div>

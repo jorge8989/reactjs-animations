@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 let TodoList = React.createClass({
   render: function() {
-    const items = this.props.todos.map((todo, i) => {
+    const todos = this.props.todos.map((todo, i) => {
       return <Todo key={todo.text} item={todo.text}/>
     });
   return (
@@ -21,7 +21,7 @@ let TodoList = React.createClass({
           </tr>
         </thead>
         <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300} component="tbody">
-          { items }
+          { todos }
         </ReactCSSTransitionGroup>
       </table>
     )
