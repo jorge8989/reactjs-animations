@@ -1,6 +1,7 @@
 import React from 'react';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
+import { ADD_TODO, addTodo, TOGGLE_TODO, toggleTodo } from '../actions/Actions';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -8,10 +9,22 @@ function mapStateToProps(state) {
   return { todos: state.todos }
 }
 
+function mapDispatchToProps(dispatch) {
+  return { toggleTodo: (text) => {
+    dispatch(toggleTodo(text))
+    }
+  }
+}
+
 let TodoList = React.createClass({
   render: function() {
     const todos = this.props.todos.map((todo, i) => {
-      return <Todo key={todo.text} text={todo.text} completed={todo.completed}/>
+      return <Todo 
+              key={todo.text} 
+              text={todo.text} 
+              completed={todo.completed}
+              toggleTodo={this.props.toggleTodo}
+              />
     });
   return (
       <table class="table table-striped">
@@ -29,7 +42,8 @@ let TodoList = React.createClass({
 })
 
 TodoList = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(TodoList)
 
 

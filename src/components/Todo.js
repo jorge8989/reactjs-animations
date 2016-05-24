@@ -1,14 +1,20 @@
 import React from 'react';
 
 const Todo = React.createClass({
+  handleToggle: function() {
+    this.props.toggleTodo(this.props.text)
+  },
   render: function() {
+    const handleToggle = this.handleToggle
     const todoStyle = {
       color: this.props.completed ? 'green' : 'red',
       cursor: 'pointer'
     } 
     return (
         <tr>
-          <td style={todoStyle}>{this.props.text}</td>
+          <td style={todoStyle} onClick={() => { handleToggle() } }>
+            {this.props.text}
+          </td>
         </tr>
     )  
   }

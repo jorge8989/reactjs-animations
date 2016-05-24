@@ -1,7 +1,7 @@
-import { ADD_TODO, addTodo } from '../actions/Actions';
+import { ADD_TODO, TOGGLE_TODO, toggleTodo, addTodo } from '../actions/Actions';
+import { combineReducers } from 'redux'
 
-const initialState = {
-  todos: [
+const todosList = [
     { text: 'Go shopping',
       completed: false },
     { text: 'Study english',
@@ -9,21 +9,30 @@ const initialState = {
     { text: 'Eat dinner',
       completed: false }    
   ]
-}
 
-function todoApp(state = initialState, action) {
+function todos(state = todosList, action) {
    switch (action.type) {
      case ADD_TODO:
-       return Object.assign({}, state, {
-         todos: [
-           ...state.todos,
+       return [
+           ...state,
            { text: action.text,
              completed: false }
          ]
+     case TOGGLE_TODO:
+       return state.map(todo => {
+         if (todo.text === action.text) {
+           return Object.assign({}, todo, {
+             completed: !todo.completed
+           })
+         }
+         return todo
        })
      default:
        return state
    }
 }
+const todoApp = combineReducers({
+  todos
+})
 
 export default todoApp
