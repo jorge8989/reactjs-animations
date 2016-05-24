@@ -2,9 +2,13 @@ import React from 'react';
 
 const Todo = React.createClass({
   render: function() {
+    const todoStyle = {
+      color: this.props.completed ? 'green' : 'red',
+      cursor: 'pointer'
+    } 
     return (
         <tr>
-          <td>{this.props.item}</td>
+          <td style={todoStyle}>{this.props.text}</td>
         </tr>
     )  
   }

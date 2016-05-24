@@ -11,7 +11,7 @@ function mapStateToProps(state) {
 let TodoList = React.createClass({
   render: function() {
     const todos = this.props.todos.map((todo, i) => {
-      return <Todo key={todo.text} item={todo.text}/>
+      return <Todo key={todo.text} text={todo.text} completed={todo.completed}/>
     });
   return (
       <table class="table table-striped">

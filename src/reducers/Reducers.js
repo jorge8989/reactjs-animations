@@ -2,9 +2,12 @@ import { ADD_TODO, addTodo } from '../actions/Actions';
 
 const initialState = {
   todos: [
-    { text: 'Go shopping' },
-    { text: 'Study english' },
-    { text: 'Eat dinner' }    
+    { text: 'Go shopping',
+      completed: false },
+    { text: 'Study english',
+      completed: false },
+    { text: 'Eat dinner',
+      completed: false }    
   ]
 }
 
@@ -14,7 +17,8 @@ function todoApp(state = initialState, action) {
        return Object.assign({}, state, {
          todos: [
            ...state.todos,
-           { text: action.text }
+           { text: action.text,
+             completed: false }
          ]
        })
      default:
