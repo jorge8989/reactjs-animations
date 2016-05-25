@@ -3,11 +3,14 @@ import { combineReducers } from 'redux'
 
 const todosList = [
     { text: 'Go shopping',
-      completed: false },
+      completed: false,
+      id: 1 },
     { text: 'Study english',
-      completed: false },
+      completed: false,
+      id: 2 },
     { text: 'Eat dinner',
-      completed: false }    
+      completed: false,
+      id: 3 }    
   ]
 
 function todos(state = todosList, action) {
@@ -16,11 +19,12 @@ function todos(state = todosList, action) {
        return [
            ...state,
            { text: action.text,
-             completed: false }
+             completed: false,
+             id: action.id }
          ]
      case TOGGLE_TODO:
        return state.map(todo => {
-         if (todo.text === action.text) {
+         if (todo.id === action.id) {
            return Object.assign({}, todo, {
              completed: !todo.completed
            })
@@ -31,6 +35,8 @@ function todos(state = todosList, action) {
        return state
    }
 }
+
+
 const todoApp = combineReducers({
   todos
 })

@@ -10,8 +10,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { toggleTodo: (text) => {
-    dispatch(toggleTodo(text))
+  return { toggleTodo: (id) => {
+    dispatch(toggleTodo(id))
     }
   }
 }
@@ -20,7 +20,8 @@ let TodoList = React.createClass({
   render: function() {
     const todos = this.props.todos.map((todo, i) => {
       return <Todo 
-              key={todo.text} 
+              key={todo.id} 
+              id={todo.id}
               text={todo.text} 
               completed={todo.completed}
               toggleTodo={this.props.toggleTodo}
