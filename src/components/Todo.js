@@ -1,5 +1,27 @@
 import React from 'react';
 
+const ActionsSection = (editing) => {
+  if ( editing === true ) {
+    return (
+    <td>
+      <button class="btn btn-primary">Save</button>
+      <button class="btn btn-default">Cancel</button>
+    </td>
+    )
+  } else {
+    return (
+      <td>
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger" 
+          onClick={ () => { handleDelete() } }
+        >
+          Delete
+        </button>
+      </td>
+    )
+  }
+}
+
 const Todo = React.createClass({
   handleToggle: function() {
     this.props.toggleTodo(this.props.id)
@@ -19,14 +41,7 @@ const Todo = React.createClass({
           <td style={todoStyle} onClick={() => { handleToggle() } }>
             {this.props.text}
           </td>
-          <td>
-            <button class="btn btn-primary">Edit</button>
-            <button class="btn btn-danger" 
-              onClick={ () => { handleDelete() } }
-            >
-              Delete
-            </button>
-          </td>
+          <ActionsSection editing={this.props.editing}/>
         </tr>
     )  
   }

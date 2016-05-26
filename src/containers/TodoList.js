@@ -26,7 +26,8 @@ let TodoList = React.createClass({
       return <Todo 
               key={todo.id} 
               id={todo.id}
-              text={todo.text} 
+              text={todo.text}
+              editing={todo.editing} 
               completed={todo.completed}
               toggleTodo={this.props.toggleTodo}
               deleteTodo={this.props.deleteTodo}
