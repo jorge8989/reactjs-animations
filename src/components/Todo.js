@@ -22,6 +22,28 @@ const ActionsSection = ({ editing, handleToggleEdit }) => {
   }
 }
 
+let editInput;
+
+const TasksSection = ({ completed, editing, text, handleToggle }) => {
+  const todoStyle = {
+    color: completed ? 'green' : 'red',
+    cursor: 'pointer'
+  } 
+  if ( editing === true ) {
+    return (
+      <td on>
+        <input type="text" defaultValue={ text } ref={(ref) => { editInput = ref }} class="form-control"/>
+      </td>
+    ) 
+  } else {
+    return (
+      <td style={todoStyle} onClick={() => { handleToggle() } }>
+        { text }
+      </td>
+    )
+  }
+}
+
 const Todo = React.createClass({
   handleToggleEdit: function() {
     this.props.toggleEdit(this.props.id)
@@ -36,15 +58,13 @@ const Todo = React.createClass({
     const handleToggle = this.handleToggle
     const handleDelete = this.handleDelete
     const handleToggleEdit = this.handleToggleEdit
-    const todoStyle = {
-      color: this.props.completed ? 'green' : 'red',
-      cursor: 'pointer'
-    } 
     return (
         <tr>
-          <td style={todoStyle} onClick={() => { handleToggle() } }>
-            {this.props.text}
-          </td>
+          <TasksSection editing={this.props.editing} 
+           handleToggle={handleToggle} 
+           completed={this.props.completed}
+           text={this.props.text}
+           />
           <ActionsSection editing={this.props.editing} handleToggleEdit={handleToggleEdit}/>
         </tr>
     )  
