@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
-import { ADD_TODO, addTodo, TOGGLE_TODO, toggleTodo, deleteTodo } from '../actions/Actions';
+import { addTodo, toggleTodo, deleteTodo } from '../actions/Actions';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
