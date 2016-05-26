@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
-import { ADD_TODO, addTodo, TOGGLE_TODO, toggleTodo } from '../actions/Actions';
+import { ADD_TODO, addTodo, TOGGLE_TODO, toggleTodo, deleteTodo } from '../actions/Actions';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -10,8 +10,12 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { toggleTodo: (id) => {
-    dispatch(toggleTodo(id))
+  return { 
+    toggleTodo: (id) => {
+      dispatch(toggleTodo(id))
+    },
+    deleteTodo: (id) => {
+      dispatch(deleteTodo(id))
     }
   }
 }
@@ -25,6 +29,7 @@ let TodoList = React.createClass({
               text={todo.text} 
               completed={todo.completed}
               toggleTodo={this.props.toggleTodo}
+              deleteTodo={this.props.deleteTodo}
               />
     });
   return (
@@ -32,6 +37,7 @@ let TodoList = React.createClass({
         <thead>
           <tr>
             <th>Tasks</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300} component="tbody">
