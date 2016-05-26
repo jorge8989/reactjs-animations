@@ -1,17 +1,17 @@
 import React from 'react';
 
-const ActionsSection = (editing) => {
+const ActionsSection = ({ editing, handleToggleEdit }) => {
   if ( editing === true ) {
     return (
     <td>
       <button class="btn btn-primary">Save</button>
-      <button class="btn btn-default">Cancel</button>
+      <button class="btn btn-default" onClick={ () => handleToggleEdit() }>Cancel</button>
     </td>
     )
   } else {
     return (
       <td>
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary" onClick={ () => handleToggleEdit() }>Edit</button>
         <button class="btn btn-danger" 
           onClick={ () => { handleDelete() } }
         >
@@ -23,6 +23,9 @@ const ActionsSection = (editing) => {
 }
 
 const Todo = React.createClass({
+  handleToggleEdit: function() {
+    this.props.toggleEdit(this.props.id)
+  },
   handleToggle: function() {
     this.props.toggleTodo(this.props.id)
   },
@@ -32,6 +35,7 @@ const Todo = React.createClass({
   render: function() {
     const handleToggle = this.handleToggle
     const handleDelete = this.handleDelete
+    const handleToggleEdit = this.handleToggleEdit
     const todoStyle = {
       color: this.props.completed ? 'green' : 'red',
       cursor: 'pointer'
@@ -41,7 +45,7 @@ const Todo = React.createClass({
           <td style={todoStyle} onClick={() => { handleToggle() } }>
             {this.props.text}
           </td>
-          <ActionsSection editing={this.props.editing}/>
+          <ActionsSection editing={this.props.editing} handleToggleEdit={handleToggleEdit}/>
         </tr>
     )  
   }
