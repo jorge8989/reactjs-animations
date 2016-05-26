@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, TOGGLE_EDIT } from '../actions/Actions';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, TOGGLE_EDIT, UPDATE_TODO } from '../actions/Actions';
 import { combineReducers } from 'redux';
 import _ from 'lodash';
 
@@ -41,6 +41,15 @@ function todos(state = todosList, action) {
          if (todo.id === action.id) {
            return Object.assign({}, todo, {
              editing: !todo.editing
+           })
+         }
+         return todo
+       })
+     case UPDATE_TODO:
+       return state.map(todo => {
+         if (todo.id === action.id) {
+           return Object.assign({}, todo, {
+             text: action.newtext
            })
          }
          return todo
