@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from '../components/Todo';
 import { connect } from 'react-redux';
-import { addTodo, toggleTodo, deleteTodo, toggleEdit } from '../actions/Actions';
+import { addTodo, toggleTodo, deleteTodo, toggleEdit, updateTodo } from '../actions/Actions';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -19,6 +19,9 @@ function mapDispatchToProps(dispatch) {
     },
     toggleEdit: (id) => {
       dispatch(toggleEdit(id))
+    },
+    updateTodo: (id, newtext) => {
+      dispatch(updateTodo(id, newtext))
     }
   }
 }
@@ -35,6 +38,7 @@ let TodoList = React.createClass({
               toggleTodo={this.props.toggleTodo}
               deleteTodo={this.props.deleteTodo}
               toggleEdit={this.props.toggleEdit}
+              updateTodo={this.props.updateTodo}
               />
     });
   return (
