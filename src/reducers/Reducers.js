@@ -1,5 +1,6 @@
-import { ADD_TODO, TOGGLE_TODO, toggleTodo, addTodo } from '../actions/Actions';
-import { combineReducers } from 'redux'
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from '../actions/Actions';
+import { combineReducers } from 'redux';
+import _ from 'lodash';
 
 const todosList = [
     { text: 'Go shopping',
@@ -31,6 +32,8 @@ function todos(state = todosList, action) {
          }
          return todo
        })
+     case DELETE_TODO:
+       return _.without(state, _.find(state, {id: action.id}))
      default:
        return state
    }
